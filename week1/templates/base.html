@@ -7,8 +7,7 @@
     <title>{{ page_title }}</title>
   	<meta charset="utf-8"/>
     <!-- include the css from the file static/style.css -->
-    <link rel="stylesheet" href="../static/styles.css" type="text/css"/>
-    <link rel="stylesheet" href="https://foundations-cicd-306018.ey.r.appspot.com/static/styles.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" type="text/css"/>
     
   </head>
   <body>
