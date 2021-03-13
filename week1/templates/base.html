@@ -4,20 +4,28 @@
 <html>
   <head>
     <!-- the page title will be a varible passed to the render_template() function for each page separately-->
-    <title> {{ page_title }}</title>
+    <title>{{ page_title }}</title>
   	<meta charset="utf-8"/>
     <!-- include the css from the file static/style.css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  </head>
+    <link rel="stylesheet" href="/static/styles.css">
+  </link></head>
   <body>
 
   <!-- this headline will appear on all pages. -->
   <header>
     <div class="banner">
-      <h1> All about CODE </h1> 
-      <h3> A really great place. </h3>
+      <h1> MY CODE LIFE </h1> 
+      <h3> {{ header }}</h3>
     </div>
   </header>
+
+    <ul>
+      <li><a href="/first-page">About CODE University</a></li>
+      <li><a href="/second-page">My Experience</a></li>
+      <li><a href="/contact-page">Contact</a></li>
+    </ul>
+
+  
 
   <!-- This is the part which will be different on each page. 
        see first-page.html for an example of using it -->
@@ -26,6 +34,6 @@
     {% endblock %}
   </main>
   <footer>
-    <h3> Made with love </h3>
+    <h3> {{footer_note}}</h3>
   </footer>
   </body>
