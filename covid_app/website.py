@@ -7,6 +7,8 @@ from covid_app.controllers.database_helpers import connect_to_database
 from covid_app.controllers.database_helpers import close_conection_to_database
 from covid_app.controllers.database_helpers import change_database
 from covid_app.controllers.database_helpers import query_database
+from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -42,11 +44,13 @@ def index():
 def create_meeting():
     try:
         name = request.form.get('name')
+        today = datetime.today().strftime('%Y-%m-%d')
+        #date = date.today()
         # app.logger.info(name)
         # turn this into an SQL command. For example:
         # "Adam" --> "INSERT INTO Meetings (name) VALUES("Adam");"
-        sql_insert = "INSERT INTO Meetings (name) VALUES (\"{name}\");".format(
-            name=name)
+        sql_insert = "INSERT INTO Meetings (Name, Date) VALUES (\"{name}\", \"{date}\");".format(
+            name=name, date=today)
 
         # connect to the database with the filename configured above
         # returning a 2-tuple that contains a connection and cursor object
@@ -56,6 +60,7 @@ def create_meeting():
         # now that we have connected, add the new meeting (insert a row)
         # --> see file database_helpers for more
         change_database(database_tuple[0], database_tuple[1], sql_insert)
+        
 
         # now, get all of the meetings from the database, not just the new one.
         # first, define the query to get all meetings:
