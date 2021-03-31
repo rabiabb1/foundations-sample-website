@@ -49,7 +49,7 @@ def create_meeting():
         # app.logger.info(name)
         # turn this into an SQL command. For example:
         # "Adam" --> "INSERT INTO Meetings (name) VALUES("Adam");"
-        sql_insert = "INSERT INTO Meetings (Name, Date) VALUES (\"{name}\", \"{date}\");".format(
+        sql_insert = "INSERT INTO Meetings (name, date) VALUES (\"{name}\", \"{date}\");".format(
             name=name, date=today)
 
         # connect to the database with the filename configured above
@@ -64,7 +64,8 @@ def create_meeting():
 
         # now, get all of the meetings from the database, not just the new one.
         # first, define the query to get all meetings:
-        sql_query = "SELECT * FROM Meetings;"
+        #sql_query = "SELECT * FROM Meetings;"
+        sql_query = "SELECT * FROM Meetings WHERE date BETWEEN datetime('NOW', '-10 days') AND datetime ('NOW') ORDER BY date DESC, name ASC;"
 
         # query the database, by passinng the database cursor and query,
         # we expect a list of tuples corresponding to all rows in the database
