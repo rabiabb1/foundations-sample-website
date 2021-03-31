@@ -9,8 +9,8 @@ handlers:
 - url: /static
   static_dir: week1/static
 
-- url: /data
-  static_dir: color_check/data
+#- url: /data
+#  static_dir: color_check/data
 
 - url: /.*
   secure: always
