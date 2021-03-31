@@ -17,7 +17,7 @@ def get_color_code(color_name):
 
 
     
-    with open("/home/abbas/CODEwork/SE_foundations/foundations-sample-website/color_check/data/css-color-names.json") as f:
+    with open("color_check/data/css-color-names.json") as f:
         color_codes = json.load(f)
 
         for color_code in color_codes:
